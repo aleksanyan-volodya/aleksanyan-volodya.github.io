@@ -11,42 +11,24 @@
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+    # Add your education entries here
+    # Example:
+    # - title: Master's Degree
+    #   institution: University Name, City, Country
+    #   year: YYYY
+    #   description:
+    #     - Description 1.
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+    # Add your professional experience here
+    # Example:
+    # - title: Position Title
+    #   institution: Company/Institution Name
+    #   year: YYYY - YYYY
+    #   description:
+    #     - Description 1.
 
     - title: Director
       institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.

@@ -7,16 +7,20 @@ tags: formatting bib
 categories: sample-posts
 giscus_comments: true
 related_posts: false
-related_publications: true
+related_publications: false
 ---
 
-This post shows how to add bibliography to simple blog posts. We support every citation style that [jekyll-scholar](https://github.com/inukshuk/jekyll-scholar) does. That means simple citation like {% cite einstein1950meaning %}, multiple citations like {% cite einstein1950meaning einstein1905movement %}, long references like {% reference einstein1905movement %} or also quotes:
+This post shows how to add bibliography to simple blog posts. We support every citation style that [jekyll-scholar](https://github.com/inukshuk/jekyll-scholar) does. To use citations, first add entries to `_bibliography/papers.bib` and then cite them using the `{% raw %}{% cite %}{% endraw %}` tag.
 
-{% quote einstein1905electrodynamics %}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-sed do eiusmod tempor.
+Example formats:
 
-Lorem ipsum dolor sit amet, consectetur adipisicing.
-{% endquote %}
+```liquid
+{% raw %}{% cite your_paper_2024 %}{% endraw %} - Simple citation
+{% raw %}{% cite paper1_2024 paper2_2024 %}{% endraw %} - Multiple citations
+{% raw %}{% reference your_paper_2024 %}{% endraw %} - Long reference format
+```
+
+For more information, see the [jekyll-scholar documentation](https://github.com/inukshuk/jekyll-scholar).
 
 If you would like something more academic, check the [distill style post]({% post_url 2018-12-22-distill %}).
+
