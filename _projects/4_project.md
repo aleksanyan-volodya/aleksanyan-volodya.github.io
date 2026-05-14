@@ -1,12 +1,11 @@
 ---
 layout: page
-title: Project 4
-description: Add your project description here
-img: assets/img/12.jpg
+title: "TODO: Project 4 Title"
+description: TODO: one-line description of project 4
+img:
 importance: 4
-category: work
+category: research
+github:
 ---
 
-## Project Title
-
-Add your project content here.
+TODO: add project 4 description, context, and results here.

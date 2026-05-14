@@ -1,10 +1,6 @@
 github_users:
-  # Add your GitHub username here
-  # - yourusername
+  - aleksanyan-volodya
 
 repo_description_lines_max: 2
 
 github_repos:
-  # Add your GitHub repositories here
-  # - yourusername/your-repo
-
