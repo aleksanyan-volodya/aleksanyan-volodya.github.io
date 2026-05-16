@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "TODO: Project 2 Title"
-description: TODO: one-line description of project 2
+description: "TODO: one-line description of project 2"
 img:
 importance: 2
 category: research
