@@ -30,26 +30,21 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "projects-todo-project-1-title",
-          title: 'TODO: Project 1 Title',
-          description: "TODO: one-line description of project 1",
+        },{id: "projects-interactive-transformer-architecture-demo",
+          title: 'Interactive Transformer Architecture Demo',
+          description: "A web platform making the attention mechanism tangible — includes a live emotion recognition module trained on user input.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-todo-project-2-title",
-          title: 'TODO: Project 2 Title',
-          description: "TODO: one-line description of project 2",
+            },},{id: "projects-net-load-forecasting-during-the-sobriety-period",
+          title: 'Net Load Forecasting During the Sobriety Period',
+          description: "Adaptive forecasting tools for energy net load using SARIMA, GAM, and XGBoost — built for the context of energy price volatility and renewable intermittency.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
-            },},{id: "projects-todo-project-3-title",
-          title: 'TODO: Project 3 Title',
-          description: "TODO: one-line description of project 3",
+            },},{id: "projects-disease-prediction-amp-bias-mitigation-on-chest-x-rays",
+          title: 'Disease Prediction &amp;amp; Bias Mitigation on Chest X-rays',
+          description: "A fair deep learning classifier for pulmonary disease detection from chest X-rays — addressing demographic bias in medical imaging models.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
-            },},{id: "projects-todo-project-4-title",
-          title: 'TODO: Project 4 Title',
-          description: "TODO: one-line description of project 4",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_project/";
             },},{
         id: 'social-cv',
         title: 'CV',
