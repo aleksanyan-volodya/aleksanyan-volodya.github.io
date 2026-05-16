@@ -79,6 +79,33 @@ layout: default
       {% include selected_papers.liquid %}
     {% endif %}
 
+    <!-- Letterboxd -->
+    {% if site.data.letterboxd and site.data.letterboxd.size > 0 %}
+      <div class="letterboxd-section">
+        <h2 class="letterboxd-heading">
+          recently watched
+          <a href="https://letterboxd.com/_volodya_/" target="_blank" rel="noopener noreferrer" class="letterboxd-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:6px;vertical-align:middle;opacity:0.6"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 0v6h-2V6.414l-9.293 9.293-1.414-1.414L17.586 5H15V3z"/></svg>
+          </a>
+        </h2>
+        <div class="film-strip">
+          {% for film in site.data.letterboxd %}
+            <a href="{{ film.link }}" target="_blank" rel="noopener noreferrer" class="film-card">
+              {% if film.poster != '' %}
+                <img src="{{ film.poster }}" alt="{{ film.title }}" loading="lazy">
+              {% else %}
+                <div class="film-no-poster">{{ film.title }}</div>
+              {% endif %}
+              <div class="film-overlay">
+                <div class="film-title">{{ film.title }}</div>
+                <div class="film-meta">{{ film.year }}{% if film.stars != '' %} · {{ film.stars }}{% endif %}</div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
     <!-- Social -->
     {% if page.social %}
       <div class="social">

@@ -88,6 +88,38 @@ jobs:
           valueFile: "_config.yml"
           propertyPath: "giscus.repo"
           value: ${{ github.repository }}
+      - name: Fetch Letterboxd data 🎬
+        run: |
+          python3 << 'EOF'
+          import urllib.request, json, xml.etree.ElementTree as ET, re, sys
+          try:
+            req = urllib.request.Request('https://letterboxd.com/_volodya_/rss/', headers={'User-Agent': 'Mozilla/5.0'})
+            xml_content = urllib.request.urlopen(req, timeout=15).read().decode()
+            root = ET.fromstring(xml_content)
+            films, seen = [], set()
+            for item in root.findall('.//item'):
+              t = item.find('{https://letterboxd.com}filmTitle')
+              if t is None or t.text in seen: continue
+              seen.add(t.text)
+              y = item.find('{https://letterboxd.com}filmYear')
+              r = item.find('{https://letterboxd.com}memberRating')
+              l = item.find('link')
+              d = item.find('description')
+              poster = ''
+              if d is not None and d.text:
+                m = re.search(r'src="(https://a\.ltrbxd\.com[^"]+)"', d.text)
+                if m: poster = m.group(1)
+              rating = float(r.text) if r is not None else None
+              stars = (('★' * int(rating)) + ('½' if rating and rating % 1 >= 0.5 else '')) if rating else ''
+              link_text = l.text.strip() if l is not None and l.text else ''
+              films.append({'title': t.text, 'year': y.text if y is not None else '', 'stars': stars, 'link': link_text, 'poster': poster})
+              if len(films) >= 6: break
+            json.dump(films, open('_data/letterboxd.json', 'w'), indent=2)
+            print(f'Fetched {len(films)} films from Letterboxd')
+          except Exception as e:
+            print(f'Warning: could not fetch Letterboxd: {e}', file=sys.stderr)
+            json.dump([], open('_data/letterboxd.json', 'w'))
+          EOF
       - name: Install and Build 🔧
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
