@@ -30,24 +30,24 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "projects-",
-          title: '',
-          description: "",
+        },{id: "projects-todo-project-1-title",
+          title: 'TODO: Project 1 Title',
+          description: "TODO: one-line description of project 1",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-",
-          title: '',
-          description: "",
+            },},{id: "projects-todo-project-2-title",
+          title: 'TODO: Project 2 Title',
+          description: "TODO: one-line description of project 2",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
-            },},{id: "projects-",
-          title: '',
-          description: "",
+            },},{id: "projects-todo-project-3-title",
+          title: 'TODO: Project 3 Title',
+          description: "TODO: one-line description of project 3",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
-            },},{id: "projects-",
-          title: '',
-          description: "",
+            },},{id: "projects-todo-project-4-title",
+          title: 'TODO: Project 4 Title',
+          description: "TODO: one-line description of project 4",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_project/";
             },},{
