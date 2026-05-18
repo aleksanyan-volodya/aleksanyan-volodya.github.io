@@ -11,13 +11,13 @@
   contents:
     - title: Master's Degree in Mathematics and Artificial Intelligence
       institution: Université Paris-Saclay, Orsay, France
-      year: 2025 – Present
+      year: 2025 - Present
       description:
         - Probability, optimization, advanced statistics, supervised and unsupervised learning, biostatistics (MVA), deep learning, foundations of ML, time series prediction.
         - "<b>MixtAI Scholarship (SaclAI-School)</b>: fellowship supporting diversity and academic excellence in AI."
     - title: Dual Bachelor's Degree in Computer Science and Mathematics
       institution: Université Paris-Saclay, Orsay, France
-      year: 2022 – 2025
+      year: 2022 - 2025
       description:
         - "Mathematics: probability, optimization, differential calculus, ODEs, linear algebra, statistics with R, integration theory, numerical analysis."
         - "Computer Science: fairness in AI, machine learning, distributed algorithms, theoretical CS, logic, databases, functional programming, numerical optimization."
@@ -29,33 +29,33 @@
   contents:
     - title: CVNN for Direct and Inverse Problems of EM Wave Diffraction
       institution: GeePS, CentraleSupélec — Supervisor Marc Lambert
-      year: Mar 2026 – Present
+      year: Mar 2026 - Present
       description:
         - Implementation of physics-informed complex-valued neural networks (CVNN) for improved resolution of direct and inverse electromagnetic wave diffraction problems.
         - "Tools: Python, Matlab."
     - title: Interactive Demonstration of the Transformer Architecture
-      year: Feb 2026 – Mar 2026
+      year: Feb 2026 - Mar 2026
       description:
         - Design of a web platform showcasing the attention mechanism in practice. Implementation of an emotion recognition module based on user input, with online training capability.
         - "Tools: Python."
     - title: Sustainable Energy Demand Forecasting
-      year: Jan 2026 – Feb 2026
+      year: Jan 2026 - Feb 2026
       description:
         - Design of adaptive forecasting tools based on SARIMA, GAM, and XGBoost models to anticipate consumption variations driven by price volatility and renewable energy intermittency.
         - "Tools: Python, R."
     - title: Bias Analysis in Vision-Language Models
       institution: Thales — Supervisor Alice Héliou
-      year: May 2025 – Jul 2025
+      year: May 2025 - Jul 2025
       description:
         - Studied social biases in OpenAI's CLIP. Implemented and explored the impact of fine-tuning and adversarial learning strategies on performance and fairness applied to medical images.
         - "Tools: Python."
     - title: Disease Prediction and Bias Mitigation on Chest X-rays
-      year: Feb 2025 – Apr 2025
+      year: Feb 2025 - Apr 2025
       description:
         - Developed a fair classifier for predicting pulmonary diseases. Improved accuracy and minimized biases of a deep learning model working with Chest X-Ray images.
         - "Tools: Python."
     - title: Boolean Circuits
-      year: Jan 2024 – May 2024
+      year: Jan 2024 - May 2024
       description:
         - Designed boolean circuits, automated circuit simplification, and developed graph-based visualizations.
         - "Tools: Python."
@@ -65,25 +65,25 @@
   contents:
     - title: Member of Automatants CS IA
       institution: Artificial Intelligence Association of CentraleSupélec
-      year: Feb 2026 – Present
+      year: Feb 2026 - Present
     - title: Ambassador Student
-      year: Oct 2025 – Present
+      year: Oct 2025 - Present
       description:
         - Help students in their integration, inform them about available offers and services.
     - title: Student Monitor
-      year: Sep 2023 – Jun 2025
+      year: Sep 2023 - Jun 2025
       description:
         - Managed library resources, assisted students with research material.
     - title: Member of the Curriculum Advisory Board
-      year: Feb 2024 – Jun 2025
+      year: Feb 2024 - Jun 2025
       description:
         - Contributed to curriculum improvement and adaptation to professional requirements.
     - title: President, "LDD IM" Student Association
-      year: Jun 2023 – Jun 2025
+      year: Jun 2023 - Jun 2025
       description:
         - Strengthened student solidarity, facilitated networking with alumni, and supported new student integration.
     - title: Co-founder and Vice-President, Algo Paris-Saclay Club
-      year: Jan 2023 – Jun 2023
+      year: Jan 2023 - Jun 2023
       description:
         - SWERC and Prologin preparation.
 
