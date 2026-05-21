@@ -9,7 +9,7 @@ github: Rayan76q/CLIP_analysis
 tags: [Python, Fairness in AI, Vision-Language Models, CLIP, Medical Imaging]
 ---
 
-Research internship at **Thales**, under the supervision of [Alice Héliou](https://scholar.google.com/). This project was developed in equal collaboration with [Rayan Benbrahim](https://github.com/Rayan76q).
+Research internship under the supervision of [Alice Héliou](https://www.researchgate.net/profile/Alice-Heliou). This project was developed in collaboration with [Rayan LALAOUI](https://github.com/Rayan76q).
 
 **What it does**
 - Audits social biases encoded in [OpenAI's CLIP](https://openai.com/research/clip), a large vision-language model trained on 400M image-text pairs

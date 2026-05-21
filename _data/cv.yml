@@ -44,7 +44,7 @@
         - Design of adaptive forecasting tools based on SARIMA, GAM, and XGBoost models to anticipate consumption variations driven by price volatility and renewable energy intermittency.
         - "Tools: Python, R."
     - title: Bias Analysis in Vision-Language Models
-      institution: Thales — Supervisor Alice Héliou
+      institution: Supervisor Alice Héliou
       year: May 2025 - Jul 2025
       description:
         - Studied social biases in OpenAI's CLIP. Implemented and explored the impact of fine-tuning and adversarial learning strategies on performance and fairness applied to medical images.
