@@ -3,7 +3,7 @@ layout: page
 title: Net Load Forecasting During the Sobriety Period
 description: Adaptive forecasting tools for energy net load using SARIMA, GAM, and XGBoost — built for the context of energy price volatility and renewable intermittency.
 img:
-importance: 2
+importance: 3
 category: research
 github: aleksanyan-volodya/Net-Load-Forecasting-During-the-Soberty-Period
 tags: [Python, R, Time Series, XGBoost]
