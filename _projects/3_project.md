@@ -9,7 +9,7 @@ github: aleksanyan-volodya/X-Ray_thorax_fairness_analysis
 tags: [Python, Fairness in AI, Deep Learning, Medical Imaging]
 ---
 
-Medical AI systems trained on imbalanced datasets can systematically underperform for certain demographic groups. This project addresses that problem in the context of chest X-ray disease prediction.
+Medical AI systems trained on imbalanced datasets can systematically underperform for certain demographic groups. This project addresses that problem in the context of chest X-ray disease prediction. This project was developed in collaboration with [Clément Cournil--Rabeux](https://github.com/Klem404).
 
 **What it does**
 - Trains a deep learning classifier to predict multiple pulmonary diseases from the NIH Chest X-Ray dataset

@@ -26,7 +26,7 @@ latest_posts:
 
 Hi, I'm Volodya, a first-year Master's student in **Mathematics and Artificial Intelligence** at [Université Paris-Saclay](https://www.universite-paris-saclay.fr).
 
-I am currently doing a research internship at **GeePS, CentraleSupélec**, working on physics-informed complex-valued neural networks (CVNNs) to solve direct and inverse problems in electromagnetic wave diffraction, under the supervision of [Marc Lambert](https://www.geeps.centralesupelec.fr).
+I am currently doing a research internship at **GeePS, CentraleSupélec**, working on physics-informed complex-valued neural networks (CVNNs) to solve direct and inverse problems in electromagnetic wave diffraction, under the supervision of [Marc Lambert](https://scholar.google.com/citations?user=jx5l0-AAAAAJ&hl=en).
 
 Before the Master's, I completed a **Dual Bachelor's Degree in Computer Science and Mathematics** at Université Paris-Saclay (2022–2025). The double programme gave me a solid foundation across probability, optimisation, machine learning theory and the practical side of software systems.
 
