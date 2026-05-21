@@ -45,6 +45,11 @@ ninja.data = [{
           description: "A fair deep learning classifier for pulmonary disease detection from chest X-rays — addressing demographic bias in medical imaging models.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
+            },},{id: "projects-bias-analysis-in-vision-language-models-clip",
+          title: 'Bias Analysis in Vision-Language Models (CLIP)',
+          description: "Studied social biases in OpenAI&#39;s CLIP and explored fine-tuning and adversarial learning strategies to improve fairness on medical images — internship at Thales.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_project/";
             },},{
         id: 'social-cv',
         title: 'CV',
