@@ -3,7 +3,7 @@ layout: page
 title: Interactive Transformer Architecture Demo
 description: A web platform making the attention mechanism tangible — includes a live emotion recognition module trained on user input.
 img:
-importance: 1
+importance: 2
 category: research
 github: aleksanyan-volodya/Attention
 tags: [Python, Deep Learning, NLP, Transformers]

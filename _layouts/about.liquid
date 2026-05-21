@@ -118,5 +118,47 @@ layout: default
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
     {% endif %}
+
+    <!-- Name variant spellings for search indexing -->
+    <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;" aria-hidden="true">
+      Volodia Aleksanyan, Volodya Aleksanian, Volodia Aleksanian,
+      Volodya Alexanyan, Volodia Alexanyan, Volodya Alexanian, Volodia Alexanian,
+      Алексанян Володя, Վոլոդյա Ալեքսանյան
+    </span>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Volodya Aleksanyan",
+      "alternateName": [
+        "Volodya",
+        "Aleksanyan",
+        "Volodia Aleksanyan",
+        "Volodya Aleksanian",
+        "Volodia Aleksanian",
+        "Volodya Alexanyan",
+        "Volodia Alexanyan",
+        "Volodya Alexanian",
+        "Volodia Alexanian",
+        "Алексанян Володя",
+        "Վոլոդյա Ալեքսանյան"
+      ],
+      "url": "https://aleksanyan-volodya.github.io",
+      "sameAs": [
+        "https://github.com/aleksanyan-volodya",
+        "https://www.linkedin.com/in/volodya-aleksanyan/"
+      ],
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Université Paris-Saclay"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Université Paris-Saclay"
+      },
+      "knowsAbout": ["Machine Learning", "Fairness in AI", "Mathematics", "Artificial Intelligence", "Neural Networks"]
+    }
+    </script>
   </article>
 </div>

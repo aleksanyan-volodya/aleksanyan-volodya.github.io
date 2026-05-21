@@ -3,7 +3,7 @@ layout: page
 title: Disease Prediction & Bias Mitigation on Chest X-rays
 description: A fair deep learning classifier for pulmonary disease detection from chest X-rays — addressing demographic bias in medical imaging models.
 img:
-importance: 3
+importance: 4
 category: research
 github: aleksanyan-volodya/X-Ray_thorax_fairness_analysis
 tags: [Python, Fairness in AI, Deep Learning, Medical Imaging]
