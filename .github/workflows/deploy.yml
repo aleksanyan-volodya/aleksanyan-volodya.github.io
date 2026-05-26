@@ -115,7 +115,7 @@ jobs:
               stars = (('★' * int(rating)) + ('½' if rating and rating % 1 >= 0.5 else '')) if rating else ''
               link_text = l.text.strip() if l is not None and l.text else ''
               films.append({'title': t.text, 'year': y.text if y is not None else '', 'stars': stars, 'link': link_text, 'poster': poster})
-              if len(films) >= 5: break
+              if len(films) >= 9: break
             json.dump(films, open('_data/letterboxd.json', 'w'), indent=2)
             print(f'Fetched {len(films)} films from Letterboxd')
           except Exception as e:
