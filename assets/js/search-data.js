@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
+        },{id: "nav-cuisine",
+          title: "cuisine",
+          description: "Recettes végétariennes du monde entier.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cuisine/";
+          },
         },{id: "nav-cv",
           title: "cv",
           description: "My curriculum vitae - education, research projects, professional experience and skills.",
