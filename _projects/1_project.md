@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Interactive Transformer Architecture Demo
-description: A web platform making the attention mechanism tangible — includes a live emotion recognition module trained on user input.
+description: A web platform making the attention mechanism tangible, with a live emotion recognition module trained on user input.
 img:
 importance: 2
 category: research
