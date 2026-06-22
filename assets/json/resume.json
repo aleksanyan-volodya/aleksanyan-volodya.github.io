@@ -29,7 +29,7 @@
   "work": [
     {
       "name": "GeePS, CentraleSupélec",
-      "position": "Research Intern — CVNN for EM Wave Diffraction",
+      "position": "Research Intern: CVNN for EM Wave Diffraction",
       "startDate": "2026-03-01",
       "endDate": "",
       "summary": "Implementation of physics-informed complex-valued neural networks (CVNN) for improved resolution of direct and inverse electromagnetic wave diffraction problems.",
@@ -37,7 +37,7 @@
     },
     {
       "name": "Thales",
-      "position": "Research Intern — Bias Analysis in Vision-Language Models",
+      "position": "Research Intern: Bias Analysis in Vision-Language Models",
       "startDate": "2025-05-01",
       "endDate": "2025-07-01",
       "summary": "Studied social biases in OpenAI's CLIP. Implemented and explored the impact of fine-tuning and adversarial learning strategies on performance and fairness of CLIP applied to medical images.",
@@ -46,7 +46,7 @@
   ],
   "volunteer": [
     {
-      "organization": "Automatants CS IA — AI Association of CentraleSupélec",
+      "organization": "Automatants CS IA, AI Association of CentraleSupélec",
       "position": "Member",
       "startDate": "2026-02-01",
       "endDate": ""
