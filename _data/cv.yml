@@ -28,7 +28,7 @@
   type: time_table
   contents:
     - title: CVNN for Direct and Inverse Problems of EM Wave Diffraction
-      institution: GeePS, CentraleSupélec (Supervisor: Marc Lambert)
+      institution: "GeePS, CentraleSupélec (Supervisor: Marc Lambert)"
       year: Mar 2026 - Present
       description:
         - Implementation of physics-informed complex-valued neural networks (CVNN) for improved resolution of direct and inverse electromagnetic wave diffraction problems.
