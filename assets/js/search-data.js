@@ -32,22 +32,22 @@ ninja.data = [{
           },
         },{id: "projects-interactive-transformer-architecture-demo",
           title: 'Interactive Transformer Architecture Demo',
-          description: "A web platform making the attention mechanism tangible — includes a live emotion recognition module trained on user input.",
+          description: "A web platform making the attention mechanism tangible, with a live emotion recognition module trained on user input.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{id: "projects-net-load-forecasting-during-the-sobriety-period",
           title: 'Net Load Forecasting During the Sobriety Period',
-          description: "Adaptive forecasting tools for energy net load using SARIMA, GAM, and XGBoost — built for the context of energy price volatility and renewable intermittency.",
+          description: "Adaptive forecasting tools for energy net load using SARIMA, GAM, and XGBoost, built for the context of energy price volatility and renewable intermittency.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
             },},{id: "projects-disease-prediction-amp-bias-mitigation-on-chest-x-rays",
           title: 'Disease Prediction &amp;amp; Bias Mitigation on Chest X-rays',
-          description: "A fair deep learning classifier for pulmonary disease detection from chest X-rays — addressing demographic bias in medical imaging models.",
+          description: "A fair deep learning classifier for pulmonary disease detection from chest X-rays, addressing demographic bias in medical imaging models.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
             },},{id: "projects-bias-analysis-in-vision-language-models-clip",
           title: 'Bias Analysis in Vision-Language Models (CLIP)',
-          description: "Studied social biases in OpenAI&#39;s CLIP and explored fine-tuning and adversarial learning strategies to improve fairness on medical images — internship at Thales.",
+          description: "Studied social biases in OpenAI&#39;s CLIP and explored fine-tuning and adversarial learning strategies to improve fairness on medical images. Internship project.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_project/";
             },},{
@@ -78,30 +78,4 @@ ninja.data = [{
         handler: () => {
           window.open("https://www.linkedin.com/in/volodya-aleksanyan", "_blank");
         },
-      },{
-      id: 'light-theme',
-      title: 'Change theme to light',
-      description: 'Change the theme of the site to Light',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("light");
-      },
-    },
-    {
-      id: 'dark-theme',
-      title: 'Change theme to dark',
-      description: 'Change the theme of the site to Dark',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("dark");
-      },
-    },
-    {
-      id: 'system-theme',
-      title: 'Use system default theme',
-      description: 'Change the theme of the site to System Default',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("system");
-      },
-    },];
+      },];
