@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Disease Prediction & Bias Mitigation on Chest X-rays
-description: A fair deep learning classifier for pulmonary disease detection from chest X-rays — addressing demographic bias in medical imaging models.
+description: A fair deep learning classifier for pulmonary disease detection from chest X-rays, addressing demographic bias in medical imaging models.
 img:
 importance: 4
 category: research
@@ -15,7 +15,7 @@ Medical AI systems trained on imbalanced datasets can systematically underperfor
 - Trains a deep learning classifier to predict multiple pulmonary diseases from the NIH Chest X-Ray dataset
 - Analyses performance disparities across demographic subgroups (age, sex, race)
 - Applies bias mitigation strategies using **AIF360** and **Fairlearn** to improve equitable performance across groups
-- Evaluates the fairness–accuracy tradeoff under different mitigation methods
+- Evaluates the fairness-accuracy tradeoff under different mitigation methods
 
 **Why it matters**
 Deploying biased diagnostic tools in clinical settings can reinforce existing health disparities. This work explores how to build models that are both accurate and fair.
