@@ -23,8 +23,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cuisine/";
           },
-        },{id: "nav-cv",
-          title: "cv",
+        },{id: "nav-background",
+          title: "background",
           description: "My curriculum vitae - education, research projects, professional experience and skills.",
           section: "Navigation",
           handler: () => {
