@@ -6,6 +6,7 @@ img:
 importance: 4
 category: research
 github: aleksanyan-volodya/X-Ray_thorax_fairness_analysis
+collaborators: Clément Cournil--Rabeux
 tags: [Python, Fairness in AI, Deep Learning, Medical Imaging]
 ---
 
