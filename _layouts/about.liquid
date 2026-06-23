@@ -2,110 +2,164 @@
 layout: default
 ---
 <div class="post">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ---- hero ---- */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow {
+      font-family: "Space Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--global-text-color-light);
+      margin-bottom: 1.1rem;
+    }
+    .signature-name {
+      font-family: "Caveat", cursive;
+      font-weight: 700;
+      line-height: 0.82;
+      margin: 0;
+    }
+    .signature-name .sig-line {
+      display: block;
+      font-size: clamp(3rem, 8vw, 6rem);
+      clip-path: inset(0 0 -20% 0);
+      animation: sigWipe 1s ease both;
+    }
+    .signature-name .sig-line--accent { color: var(--global-theme-color); }
+    .signature-name .sig-line:nth-child(1) { animation-delay: 0.05s; }
+    .signature-name .sig-line:nth-child(2) { animation-delay: 0.45s; }
+    @keyframes sigWipe {
+      from { clip-path: inset(0 100% -20% 0); }
+      to   { clip-path: inset(0 0 -20% 0); }
+    }
+    .sig-underline {
+      height: 6px; width: 140px; border-radius: 4px;
+      background: var(--global-theme-color); opacity: 0.55;
+      transform-origin: left center;
+      animation: sigGrow 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s both;
+      margin: 0.5rem 0 1.1rem;
+    }
+    @keyframes sigGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .hero-subtitle { font-size: 1.1rem; max-width: 32em; }
+
+    /* ---- floating photo ---- */
+    .hero-photo { display: flex; justify-content: center; }
+    .hero-photo .photo-wrap {
+      position: relative;
+      width: 100%; max-width: 280px;
+      animation: floaty 7s ease-in-out infinite;
+    }
+    .hero-photo .photo-wrap::before {
+      content: ""; position: absolute; inset: -12px;
+      border: 1px solid var(--global-divider-color);
+      border-radius: 50%;
+    }
+    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    #profile-photo-trigger { cursor: pointer; }
+    #profile-photo-trigger img { box-shadow: 0 18px 40px -20px rgba(0,0,0,.45); }
+
+    /* ---- recently watched (stylish tilted cards) ---- */
+    .film-strip-stylish { display: flex; flex-wrap: wrap; gap: 22px 26px; padding-top: 6px; }
+    .film-card-2 {
+      flex: 0 0 auto; width: 158px; text-decoration: none;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .film-card-2:nth-child(odd)  { transform: rotate(-2.5deg); }
+    .film-card-2:nth-child(even) { transform: rotate(2.2deg); }
+    .film-card-2:nth-child(3n)   { transform: rotate(-1.4deg); }
+    .film-card-2:hover { transform: rotate(0) translateY(-10px) scale(1.03); }
+    .film-inner {
+      background: var(--global-card-bg-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 5px; padding: 11px 11px 13px;
+      box-shadow: 0 8px 20px -14px rgba(0, 0, 0, 0.5);
+    }
+    .film-poster { width: 100%; height: 128px; object-fit: cover; border-radius: 3px; display: block; }
+    .film-poster-fallback {
+      height: 128px; border-radius: 3px; display: flex; align-items: flex-end; padding: 9px;
+      background: linear-gradient(150deg, var(--global-theme-color), #2a2622);
+    }
+    .film-year-badge { font-family: "Space Mono", monospace; font-size: 0.62rem; color: rgba(255,255,255,.85); letter-spacing: 0.05em; }
+    .film-name { margin-top: 10px; font-size: 0.95rem; font-weight: 600; line-height: 1.2; color: var(--global-text-color); }
+    .film-sub { margin-top: 5px; font-size: 0.8rem; color: var(--global-theme-color); letter-spacing: 0.04em; }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      .hero-photo { order: -1; }
+      .hero-photo .photo-wrap { max-width: 220px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .signature-name .sig-line, .sig-underline, .hero-photo .photo-wrap { animation: none; clip-path: none; transform: none; }
+    }
+  </style>
+
   <header class="post-header">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet" />
-    <style>
-      .signature-name {
-        font-family: "Caveat", cursive;
-        font-weight: 700;
-        line-height: 0.82;
-        margin-bottom: 0.15rem;
-      }
-      .signature-name .sig-line {
-        display: block;
-        font-size: clamp(3.5rem, 11vw, 7rem);
-        clip-path: inset(0 0 -20% 0);
-        animation: sigWipe 1s ease both;
-      }
-      .signature-name .sig-line--accent { color: var(--global-theme-color); }
-      .signature-name .sig-line:nth-child(1) { animation-delay: 0.05s; }
-      .signature-name .sig-line:nth-child(2) { animation-delay: 0.45s; }
-      @keyframes sigWipe {
-        from { clip-path: inset(0 100% -20% 0); }
-        to   { clip-path: inset(0 0 -20% 0); }
-      }
-      .sig-underline {
-        height: 6px; width: 150px; border-radius: 4px;
-        background: var(--global-theme-color); opacity: 0.55;
-        transform-origin: left center;
-        animation: sigGrow 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s both;
-        margin: 0.5rem 0 1.1rem;
-      }
-      @keyframes sigGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-      @media (prefers-reduced-motion: reduce) {
-        .signature-name .sig-line, .sig-underline { animation: none; clip-path: none; transform: none; }
-      }
-    </style>
-    <h1 class="post-title signature-name" aria-label="Volodya Aleksanyan">
-      <span class="sig-line">Volodya</span>
-      <span class="sig-line sig-line--accent">Aleksanyan</span>
-    </h1>
-    <div class="sig-underline"></div>
-    <p class="desc">{{ page.subtitle }}</p>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eyebrow">personal site — paris</div>
+        <h1 class="post-title signature-name" aria-label="Volodya Aleksanyan">
+          <span class="sig-line">Volodya</span>
+          <span class="sig-line sig-line--accent">Aleksanyan</span>
+        </h1>
+        <div class="sig-underline"></div>
+        <p class="desc hero-subtitle">{{ page.subtitle }}</p>
+      </div>
+
+      {% if page.profile %}
+        <div class="hero-photo">
+          <div class="photo-wrap">
+            {% if page.profile.image %}
+              {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+              {% if page.profile.image_circular %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+              {% else %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+              {% endif %}
+              {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+              <div id="profile-photo-trigger">
+                {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image cache_bust=true %}
+              </div>
+              <audio id="profile-audio" src="{{ '/assets/audio/claude_debussy.mp3' | relative_url }}" preload="none"></audio>
+              <script>
+                (function () {
+                  var el = document.getElementById("profile-photo-trigger");
+                  var audio = document.getElementById("profile-audio");
+                  if (el && audio) {
+                    el.addEventListener("click", function () {
+                      if (audio.paused) { audio.play(); } else { audio.pause(); audio.currentTime = 0; }
+                    });
+                  }
+                })();
+              </script>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
   </header>
 
   <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          <div id="profile-photo-trigger">
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-          </div>
-          <audio id="profile-audio" src="{{ '/assets/audio/claude_debussy.mp3' | relative_url }}" preload="none"></audio>
-          <script>
-            (function() {
-              var el = document.getElementById('profile-photo-trigger');
-              var audio = document.getElementById('profile-audio');
-              if (el && audio) {
-                el.style.cursor = 'default';
-                el.addEventListener('click', function() {
-                  if (audio.paused) { audio.play(); } else { audio.pause(); audio.currentTime = 0; }
-                });
-              }
-            })();
-          </script>
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
-
     <div class="clearfix">{{ content }}</div>
 
-    <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
+      <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a></h2>
       {% include news.liquid limit=true %}
     {% endif %}
 
-    <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
+      <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a></h2>
       {% include latest_posts.liquid %}
     {% endif %}
 
-    <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
+      <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a></h2>
       {% include selected_papers.liquid %}
     {% endif %}
 
@@ -118,17 +172,17 @@ layout: default
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:6px;vertical-align:middle;opacity:0.6"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7 0v6h-2V6.414l-9.293 9.293-1.414-1.414L17.586 5H15V3z"/></svg>
           </a>
         </h2>
-        <div class="film-strip">
+        <div class="film-strip-stylish">
           {% for film in site.data.letterboxd %}
-            <a href="{{ film.link }}" target="_blank" rel="noopener noreferrer" class="film-card">
-              {% if film.poster != '' %}
-                <img src="{{ film.poster }}" alt="{{ film.title }}" loading="lazy">
-              {% else %}
-                <div class="film-no-poster">{{ film.title }}</div>
-              {% endif %}
-              <div class="film-overlay">
-                <div class="film-title">{{ film.title }}</div>
-                <div class="film-meta">{{ film.year }}{% if film.stars != '' %} · {{ film.stars }}{% endif %}</div>
+            <a href="{{ film.link }}" target="_blank" rel="noopener noreferrer" class="film-card-2">
+              <div class="film-inner">
+                {% if film.poster and film.poster != '' %}
+                  <img class="film-poster" src="{{ film.poster }}" alt="{{ film.title }}" loading="lazy" />
+                {% else %}
+                  <div class="film-poster-fallback"><span class="film-year-badge">{{ film.year }}</span></div>
+                {% endif %}
+                <div class="film-name">{{ film.title }}</div>
+                <div class="film-sub">{{ film.year }}{% if film.stars and film.stars != '' %} · {{ film.stars }}{% endif %}</div>
               </div>
             </a>
           {% endfor %}
@@ -140,7 +194,6 @@ layout: default
     {% if page.social %}
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
-
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
@@ -149,7 +202,6 @@ layout: default
       {% include newsletter.liquid center=true %}
     {% endif %}
 
-    <!-- Name variant spellings for search indexing -->
     <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;" aria-hidden="true">
       Volodia Aleksanyan, Volodya Aleksanian, Volodia Aleksanian,
       Volodya Alexanyan, Volodia Alexanyan, Volodya Alexanian, Volodia Alexanian,
@@ -161,33 +213,12 @@ layout: default
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Volodya Aleksanyan",
-      "alternateName": [
-        "Volodya",
-        "Aleksanyan",
-        "Volodia Aleksanyan",
-        "Volodya Aleksanian",
-        "Volodia Aleksanian",
-        "Volodya Alexanyan",
-        "Volodia Alexanyan",
-        "Volodya Alexanian",
-        "Volodia Alexanian",
-        "Алексанян Володя",
-        "Վոլոդյա Ալեքսանյան"
-      ],
+      "alternateName": ["Volodya","Aleksanyan","Volodia Aleksanyan","Volodya Aleksanian","Volodia Aleksanian","Volodya Alexanyan","Volodia Alexanyan","Volodya Alexanian","Volodia Alexanian","Алексанян Володя","Վոլոդյա Ալեքսանյան"],
       "url": "https://aleksanyan-volodya.github.io",
-      "sameAs": [
-        "https://github.com/aleksanyan-volodya",
-        "https://www.linkedin.com/in/volodya-aleksanyan/"
-      ],
-      "affiliation": {
-        "@type": "CollegeOrUniversity",
-        "name": "Université Paris-Saclay"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Université Paris-Saclay"
-      },
-      "knowsAbout": ["Machine Learning", "Fairness in AI", "Mathematics", "Artificial Intelligence", "Neural Networks"]
+      "sameAs": ["https://github.com/aleksanyan-volodya","https://www.linkedin.com/in/volodya-aleksanyan/"],
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "Université Paris-Saclay" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Université Paris-Saclay" },
+      "knowsAbout": ["Machine Learning","Fairness in AI","Mathematics","Artificial Intelligence","Neural Networks"]
     }
     </script>
   </article>
