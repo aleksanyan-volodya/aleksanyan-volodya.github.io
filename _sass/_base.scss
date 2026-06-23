@@ -1615,3 +1615,25 @@ mjx-container[jax="CHTML"][display="true"] {
     text-decoration: none;
   }
 }
+// ---- Warm typography (personal redesign) ----
+body {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title, .post-list li a, .letterboxd-heading {
+  font-family: "Newsreader", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+// Monospace accents — meta, tags, code
+code, pre, kbd, tt,
+.post-meta, .post-tags, .post-description,
+.hero-eyebrow, .film-year-badge {
+  font-family: "Space Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+// Keep the signature in Caveat
+.signature-name { font-family: "Caveat", cursive; }
