@@ -6,6 +6,7 @@ img:
 importance: 1
 category: research
 github: Rayan76q/CLIP_analysis
+collaborators: Rayan Lalaoui
 tags: [Python, Fairness in AI, Vision-Language Models, CLIP, Medical Imaging]
 ---
 
