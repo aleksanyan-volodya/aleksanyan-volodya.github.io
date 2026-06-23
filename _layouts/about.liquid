@@ -3,14 +3,44 @@ layout: default
 ---
 <div class="post">
   <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet" />
+    <style>
+      .signature-name {
+        font-family: "Caveat", cursive;
+        font-weight: 700;
+        line-height: 0.82;
+        margin-bottom: 0.15rem;
+      }
+      .signature-name .sig-line {
+        display: block;
+        font-size: clamp(3.5rem, 11vw, 7rem);
+        clip-path: inset(0 0 -20% 0);
+        animation: sigWipe 1s ease both;
+      }
+      .signature-name .sig-line--accent { color: var(--global-theme-color); }
+      .signature-name .sig-line:nth-child(1) { animation-delay: 0.05s; }
+      .signature-name .sig-line:nth-child(2) { animation-delay: 0.45s; }
+      @keyframes sigWipe {
+        from { clip-path: inset(0 100% -20% 0); }
+        to   { clip-path: inset(0 0 -20% 0); }
+      }
+      .sig-underline {
+        height: 6px; width: 150px; border-radius: 4px;
+        background: var(--global-theme-color); opacity: 0.55;
+        transform-origin: left center;
+        animation: sigGrow 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s both;
+        margin: 0.5rem 0 1.1rem;
+      }
+      @keyframes sigGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+      @media (prefers-reduced-motion: reduce) {
+        .signature-name .sig-line, .sig-underline { animation: none; clip-path: none; transform: none; }
+      }
+    </style>
+    <h1 class="post-title signature-name" aria-label="Volodya Aleksanyan">
+      <span class="sig-line">Volodya</span>
+      <span class="sig-line sig-line--accent">Aleksanyan</span>
     </h1>
+    <div class="sig-underline"></div>
     <p class="desc">{{ page.subtitle }}</p>
   </header>
 
