@@ -1,127 +1,117 @@
 ---
 layout: default
 ---
-{% unless site.data.resume %}
-  <div class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        {{ page.title }}
-        {% if page.cv_pdf %}
-          <a
-            {% if page.cv_pdf contains '://' %}
-              href="{{ page.cv_pdf }}"
-            {% else %}
-              href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}"
-            {% endif %}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="float-right"
-          >
-            <i class="fa-solid fa-file-pdf"></i>
-          </a>
-        {% endif %}
-      </h1>
-      {% if page.description %}
-        <p class="post-description">{{ page.description }}</p>
-      {% endif %}
-    </header>
+<div class="post cv-warm">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Space+Mono:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    .cv-warm .cvw-header { padding: 1.5rem 0 1rem; }
+    .cv-warm .cvw-eyebrow { font-family: "Space Mono", monospace; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--global-text-color-light); margin-bottom: 0.6rem; }
+    .cv-warm .cvw-title { font-family: "Caveat", cursive; font-weight: 700; font-size: clamp(3rem, 7vw, 5rem); line-height: 0.85; margin: 0; }
+    .cv-warm .cvw-underline { height: 6px; width: 120px; border-radius: 4px; background: var(--global-theme-color); opacity: 0.6; margin: 0.5rem 0 1rem; }
+    .cv-warm .cvw-desc { font-size: 1.05rem; color: var(--global-text-color-light); max-width: 40em; margin: 0 0 1.1rem; }
+    .cv-warm .cvw-pdf { display: inline-flex; align-items: center; gap: 0.4rem; font-family: "Space Mono", monospace; font-size: 0.8rem; letter-spacing: 0.03em; color: #f3ecdf; background: var(--global-text-color); border-radius: 999px; padding: 0.6rem 1.1rem; text-decoration: none; transition: background 0.2s; }
+    .cv-warm .cvw-pdf:hover { background: var(--global-theme-color); color: #f3ecdf; text-decoration: none; }
 
-    <article>
-      <div class="cv">
-        {% for entry in site.data.cv %}
-          <a class="anchor" id="{{ entry.title }}"></a>
-          <div class="card mt-3 p-3">
-            <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
-            <div>
-              {% if entry.type == 'list' %}
-                {% include cv/list.liquid %}
-              {% elsif entry.type == 'map' %}
-                {% include cv/map.liquid %}
-              {% elsif entry.type == 'nested_list' %}
-                {% include cv/nested_list.liquid %}
-              {% elsif entry.type == 'time_table' %}
-                {% include cv/time_table.liquid %}
-              {% elsif entry.type == 'list_groups' %}
-                {% include cv/list_groups.liquid %}
-              {% else %}
-                {{ entry.contents }}
-              {% endif %}
+    .cv-warm .cvw-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; margin-top: 1.5rem; align-items: start; }
+    .cv-warm .cvw-section { margin-bottom: 2.2rem; }
+    .cv-warm .cvw-section-label { font-family: "Space Mono", monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--global-text-color-light); margin-bottom: 1.1rem; }
+
+    .cv-warm .cvw-timeline { border-left: 2px solid var(--global-divider-color); padding-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .cv-warm .cvw-item { position: relative; }
+    .cv-warm .cvw-dot { position: absolute; left: calc(-1.5rem - 7px); top: 0.35rem; width: 11px; height: 11px; border-radius: 50%; background: var(--global-theme-color); border: 3px solid var(--global-bg-color); }
+    .cv-warm .cvw-year { font-family: "Space Mono", monospace; font-size: 0.7rem; letter-spacing: 0.04em; color: var(--global-text-color-light); }
+    .cv-warm .cvw-item-title { font-family: "Newsreader", Georgia, serif; font-weight: 700; font-size: 1.12rem; margin: 0.25rem 0 0; line-height: 1.25; }
+    .cv-warm .cvw-inst { font-size: 0.92rem; color: var(--global-text-color-light); margin-top: 0.2rem; }
+    .cv-warm .cvw-desc-list { margin: 0.5rem 0 0; padding-left: 1.05rem; }
+    .cv-warm .cvw-desc-list li { font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.3rem; }
+
+    .cv-warm .cvw-side { display: flex; flex-direction: column; gap: 1.8rem; position: sticky; top: 5rem; }
+    .cv-warm .cvw-kv { display: flex; flex-direction: column; gap: 0.1rem; margin-bottom: 0.6rem; }
+    .cv-warm .cvw-k { font-family: "Space Mono", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--global-text-color-light); }
+    .cv-warm .cvw-v { font-size: 0.98rem; }
+    .cv-warm .cvw-skillgroup { margin-bottom: 1rem; }
+    .cv-warm .cvw-skill-cat { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.45rem; }
+    .cv-warm .cvw-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .cv-warm .cvw-chip { font-family: "Space Mono", monospace; font-size: 0.72rem; color: var(--global-text-color); background: var(--global-card-bg-color); border: 1px solid var(--global-divider-color); border-radius: 999px; padding: 0.35rem 0.7rem; }
+    .cv-warm .cvw-interest { font-size: 0.98rem; line-height: 1.55; margin: 0; }
+
+    @media (max-width: 768px) {
+      .cv-warm .cvw-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cv-warm .cvw-side { position: static; }
+    }
+  </style>
+
+  <header class="cvw-header">
+    <div class="cvw-eyebrow">curriculum vitæ</div>
+    <h1 class="cvw-title">{{ page.title }}</h1>
+    <div class="cvw-underline"></div>
+    {% if page.description %}<p class="cvw-desc">{{ page.description }}</p>{% endif %}
+    {% if page.cv_pdf %}
+      <a class="cvw-pdf" {% if page.cv_pdf contains '://' %}href="{{ page.cv_pdf }}"{% else %}href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}"{% endif %} target="_blank" rel="noopener noreferrer">↓ Download PDF</a>
+    {% endif %}
+  </header>
+
+  <div class="cvw-grid">
+    <div class="cvw-main">
+      {% for entry in site.data.cv %}
+        {% if entry.type == 'time_table' %}
+          <section class="cvw-section">
+            <div class="cvw-section-label">{{ entry.title }}</div>
+            <div class="cvw-timeline">
+              {% for content in entry.contents %}
+                <div class="cvw-item">
+                  <span class="cvw-dot"></span>
+                  {% if content.year %}<div class="cvw-year">{{ content.year }}</div>{% endif %}
+                  {% if content.title %}<h3 class="cvw-item-title">{{ content.title }}</h3>{% endif %}
+                  {% if content.institution %}<div class="cvw-inst">{{ content.institution }}</div>{% endif %}
+                  {% if content.description %}
+                    <ul class="cvw-desc-list">
+                      {% for item in content.description %}
+                        {% unless item.contents %}<li>{{ item }}</li>{% endunless %}
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+              {% endfor %}
             </div>
-          </div>
-        {% endfor %}
-      </div>
-    </article>
-  </div>
-{% else %}
-  <div class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        {{ page.title }}
-        {% if page.cv_pdf %}
-          <a
-            {% if page.cv_pdf contains '://' %}
-              href="{{ page.cv_pdf }}"
-            {% else %}
-              href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}"
-            {% endif %}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="float-right"
-          >
-            <i class="fa-solid fa-file-pdf"></i>
-          </a>
+          </section>
         {% endif %}
-      </h1>
-      {% if page.description %}
-        <p class="post-description">{{ page.description }}</p>
-      {% endif %}
-    </header>
+      {% endfor %}
+    </div>
 
-    <article>
-      <div class="cv">
-        {% for data in site.data.resume %}
-          {% if site.jsonresume and site.jsonresume.size > 0 %}
-            {% unless site.jsonresume contains data[0] %}
-              {% continue %}
-            {% endunless %}
-          {% endif %}
-          {% if data[0] == 'meta' or data[1].size == 0 %} {% continue %} {% endif %}
-          <a class="anchor" id="{{ data[0] }}"></a>
-          <div class="card mt-3 p-3">
-            <h3 class="card-title font-weight-medium">{{ data[0] | capitalize }}</h3>
-            <div>
-              {% case data[0] %}
-                {% when 'basics' %}
-                  {% include resume/basics.liquid %}
-                {% when 'education' %}
-                  {% include resume/education.liquid %}
-                {% when 'work' %}
-                  {% include resume/work.liquid %}
-                {% when 'volunteer' %}
-                  {% include resume/volunteer.liquid %}
-                {% when 'projects' %}
-                  {% include resume/projects.liquid %}
-                {% when 'awards' %}
-                  {% include resume/awards.liquid %}
-                {% when 'skills' %}
-                  {% include resume/skills.liquid %}
-                {% when 'publications' %}
-                  {% include resume/publications.liquid %}
-                {% when 'languages' %}
-                  {% include resume/languages.liquid %}
-                {% when 'interests' %}
-                  {% include resume/interests.liquid %}
-                {% when 'certificates' %}
-                  {% include resume/certificates.liquid %}
-                {% when 'references' %}
-                  {% include resume/references.liquid %}
-                {% else %}
-
-              {% endcase %}
-            </div>
+    <aside class="cvw-side">
+      {% for entry in site.data.cv %}
+        {% if entry.type == 'map' %}
+          <div class="cvw-side-block">
+            <div class="cvw-section-label">{{ entry.title }}</div>
+            {% for c in entry.contents %}
+              {% unless c.name == 'Full Name' %}
+                <div class="cvw-kv"><span class="cvw-k">{{ c.name }}</span><span class="cvw-v">{{ c.value }}</span></div>
+              {% endunless %}
+            {% endfor %}
           </div>
-        {% endfor %}
-      </div>
-    </article>
+        {% elsif entry.type == 'nested_list' %}
+          <div class="cvw-side-block">
+            <div class="cvw-section-label">{{ entry.title }}</div>
+            {% for c in entry.contents %}
+              <div class="cvw-skillgroup">
+                <div class="cvw-skill-cat">{{ c.title }}</div>
+                <div class="cvw-chips">
+                  {% for item in c.items %}
+                    {% assign parts = item | split: ", " %}
+                    {% for p in parts %}<span class="cvw-chip">{{ p }}</span>{% endfor %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% elsif entry.type == 'list' %}
+          <div class="cvw-side-block">
+            <div class="cvw-section-label">{{ entry.title }}</div>
+            {% for c in entry.contents %}<p class="cvw-interest">{{ c }}</p>{% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </aside>
   </div>
-{% endunless %}
+</div>
