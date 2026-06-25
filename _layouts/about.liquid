@@ -133,10 +133,14 @@ layout: default
               <audio id="profile-audio" src="{{ '/assets/audio/claude_debussy.mp3' | relative_url }}" preload="none"></audio>
               <script>
                 (function () {
-                  var el = document.getElementById("profile-photo-trigger");
+                  var trigger = document.getElementById("profile-photo-trigger");
                   var audio = document.getElementById("profile-audio");
-                  if (el && audio) {
-                    el.addEventListener("click", function () {
+                  if (trigger && audio) {
+                    trigger.style.position = "relative";
+                    trigger.style.zIndex = "2";
+                    trigger.addEventListener("click", function (e) {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (audio.paused) { audio.play(); } else { audio.pause(); audio.currentTime = 0; }
                     });
                   }
