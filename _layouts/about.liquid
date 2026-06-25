@@ -57,9 +57,13 @@ layout: default
       animation: floaty 7s ease-in-out infinite;
     }
     .hero-photo .photo-wrap::before {
-      content: ""; position: absolute; inset: -12px;
+      content: ""; position: absolute;
+      inset: -12px;
       border: 1px solid var(--global-divider-color);
       border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      width: calc(100% + 24px);
+      height: auto;
     }
     @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
     #profile-photo-trigger { cursor: pointer; }
