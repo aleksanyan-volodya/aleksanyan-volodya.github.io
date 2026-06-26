@@ -235,6 +235,7 @@ nav_order: 4
       (links ? '<div class="c-links">' + links + '</div>' : '');
 
     return d;
+    
   }
 
   // Ingredient filter
