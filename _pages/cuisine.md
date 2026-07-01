@@ -5,6 +5,7 @@ permalink: /cuisine/
 description: Recettes végétariennes du monde entier.
 nav: true
 nav_order: 4
+published: false
 ---
 
 <style>
