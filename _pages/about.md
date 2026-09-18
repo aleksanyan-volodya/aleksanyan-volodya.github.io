@@ -24,9 +24,7 @@ latest_posts:
   limit: 3
 ---
 
-Hi, I'm Volodya, a first-year Master's student in **Mathematics and Artificial Intelligence** at [Université Paris-Saclay](https://www.universite-paris-saclay.fr).
-
-I am currently doing a research internship at **GeePS, CentraleSupélec**, working on physics-informed complex-valued neural networks (CVNNs) to solve forward and inverse electromagnetic scattering problems, under the supervision of [Marc Lambert](https://scholar.google.com/citations?user=jx5l0-AAAAAJ&hl=en).
+Hi, I'm Volodya, a student in Master 2 in **Mathematics and Artificial Intelligence** at [Université Paris-Saclay](https://www.universite-paris-saclay.fr).
 
 Before the Master's, I completed a **Dual Bachelor's Degree in Computer Science and Mathematics** at Université Paris-Saclay. My research interests gravitate around **fairness in AI**, studying how machine learning models encode and amplify social biases and developing techniques to mitigate them. I've applied this to medical imaging, vision-language models and tabular data. More broadly, I enjoy problems at the intersection of mathematics and real life impact.
 
