@@ -43,6 +43,11 @@ ninja.data = [{
           description: "Studied social biases in OpenAI&#39;s CLIP and explored fine-tuning and adversarial learning strategies to improve fairness on medical images. Internship project.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_project/";
+            },},{id: "projects-neural-solver-for-electromagnetic-scattering",
+          title: 'Neural Solver for Electromagnetic Scattering',
+          description: "A physics-embedded neural network that predicts the electromagnetic fields scattered by dielectric objects. Internship project.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_project/";
             },},{
         id: 'social-cv',
         title: 'CV',
