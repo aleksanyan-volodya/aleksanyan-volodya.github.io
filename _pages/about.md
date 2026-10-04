@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: M1 Mathematics & AI · <a href="https://www.universite-paris-saclay.fr">Université Paris-Saclay</a> · Intern at <a href="https://www.geeps.centralesupelec.fr">GeePS, CentraleSupélec</a>
+subtitle: M2 Mathematics & AI · <a href="https://www.universite-paris-saclay.fr">Université Paris-Saclay</a>
 
 profile:
   align: right
