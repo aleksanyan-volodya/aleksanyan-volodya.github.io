@@ -2,6 +2,7 @@
 layout: about
 title: about
 permalink: /
+description: Volodya Aleksanyan, Master 2 student in Mathematics and Artificial Intelligence at Université Paris-Saclay. Research on fairness in AI, bias mitigation in medical imaging, vision-language models and tabular data.
 subtitle: M2 Mathematics & AI · <a href="https://www.universite-paris-saclay.fr">Université Paris-Saclay</a>
 
 profile:
