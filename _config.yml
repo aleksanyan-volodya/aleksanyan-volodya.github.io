@@ -9,7 +9,7 @@ last_name: Aleksanyan
 contact_note: >
   
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Personal academic website of Volodya Aleksanyan, M1 student in Mathematics and AI at Université Paris-Saclay and intern at GeePS, CentraleSupélec.
+  Personal academic website of Volodya Aleksanyan, M2 student in Mathematics and AI at Université Paris-Saclay.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
