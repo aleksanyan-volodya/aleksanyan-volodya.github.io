@@ -34,6 +34,8 @@
     {% else %}
       {{ page.title }} | {{ title }}
     {% endif %}
+  {% elsif page.url == '/' %}
+    {{ title }} | Mathematics, AI and fairness in machine learning
   {% else %}
     {{ title }}
   {% endif %}
@@ -242,6 +244,24 @@
         {% endif %}
         "name": "{{ author_name }}",
         "@context": "https://schema.org"
+    }
+  </script>
+{% endif %}
+
+{% if page.url == '/' %}
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ author_name }}",
+        "url": "{{ site.url }}{{ site.baseurl }}/",
+        "jobTitle": "Master 2 student in Mathematics and Artificial Intelligence",
+        "alumniOf": "Université Paris-Saclay",
+        "knowsAbout": ["Fairness in AI", "Machine learning", "Mathematics", "Medical imaging", "Vision-language models"],
+        "sameAs": [
+          "https://github.com/{{ site.data.socials.github_username }}",
+          "https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}"
+        ]
     }
   </script>
 {% endif %}
