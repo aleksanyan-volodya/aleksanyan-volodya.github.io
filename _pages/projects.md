@@ -5,7 +5,6 @@ permalink: /projects/
 description: A selection of research projects and personal work.
 nav: true
 nav_order: 3
-display_categories: [research]
 horizontal: false
 ---
 

@@ -1,24 +1,21 @@
 ---
 layout: page
 title: Bias Analysis in Vision-Language Models (CLIP)
-description: Studied social biases in OpenAI's CLIP and explored fine-tuning and adversarial learning strategies to improve fairness on medical images. Internship project.
+description: Study of social biases in OpenAI's CLIP, with fine-tuning and adversarial debiasing experiments for glaucoma detection on Harvard's FairVLMed dataset.
 img:
-importance: 1
-category: research
+importance: 6
 github: Rayan76q/CLIP_analysis
 collaborators: Rayan Lalaoui
 tags: [Python, Fairness in AI, Vision-Language Models, CLIP, Medical Imaging]
 ---
 
-Research internship under the supervision of [Alice Héliou](https://www.researchgate.net/profile/Alice-Heliou). This project was developed in collaboration with [Rayan LALAOUI](https://github.com/Rayan76q).
+Research project supervised by [Alice Héliou](https://www.researchgate.net/profile/Alice-Heliou). It was developed in collaboration with [Rayan LALAOUI](https://github.com/Rayan76q).
 
 **What it does**
-- Audits social biases encoded in [OpenAI's CLIP](https://openai.com/research/clip), a large vision-language model trained on 400M image-text pairs
-- Analyses how these biases propagate when CLIP is fine-tuned on medical imaging tasks (chest X-rays)
-- Implements and compares several bias mitigation strategies: supervised fine-tuning, adversarial debiasing, and contrastive approaches
-- Evaluates the fairness-performance tradeoff across demographic subgroups
+- Studies [OpenAI's CLIP](https://openai.com/research/clip) on glaucoma detection with Harvard's FairVLMed dataset, which pairs fundus images with clinical notes and patient attributes (age, gender, race, ethnicity, language)
+- Runs CLIP (ViT-B/32) in zero-shot mode with text prompts such as "a medical picture of a person with glaucoma", then adapts it with linear probing and fine-tuning on the images
+- Measures performance and prediction distributions across demographic groups (for example AUC by race), and inspects the latent space by race, gender and ethnicity
+- Explores adversarial debiasing to improve fairness (work in progress)
+- Also tests how the wording of the prompts changes the demographic attributes (race, gender) that CLIP predicts
 
-**Why it matters**
-CLIP and similar vision-language models are increasingly used as foundations for medical AI systems. Understanding and controlling the biases they carry before deployment is critical to avoid reinforcing health disparities.
-
-**Stack:** Python · PyTorch · OpenAI CLIP · AIF360 · Fairlearn
+**Stack:** Python · PyTorch · OpenAI CLIP · scikit-learn · AIF360 · Fairlearn
