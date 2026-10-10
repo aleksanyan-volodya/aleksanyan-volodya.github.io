@@ -1,24 +1,21 @@
 ---
 layout: page
 title: Disease Prediction & Bias Mitigation on Chest X-rays
-description: A fair deep learning classifier for pulmonary disease detection from chest X-rays, addressing demographic bias in medical imaging models.
+description: A ResNet18 classifier for disease detection on chest X-rays, trained with AIF360 reweighing on patient age and gender to study and reduce bias.
 img:
-importance: 4
-category: research
+importance: 7
 github: aleksanyan-volodya/X-Ray_thorax_fairness_analysis
 collaborators: Clément Cournil--Rabeux
 tags: [Python, Fairness in AI, Deep Learning, Medical Imaging]
 ---
 
-Medical AI systems trained on imbalanced datasets can systematically underperform for certain demographic groups. This project addresses that problem in the context of chest X-ray disease prediction. This project was developed in collaboration with [Clément Cournil--Rabeux](https://github.com/Klem404).
+Medical AI systems trained on imbalanced datasets can underperform for some groups of patients. This project looks at that problem on chest X-rays. It was developed in collaboration with [Clément Cournil--Rabeux](https://github.com/Klem404).
 
 **What it does**
-- Trains a deep learning classifier to predict multiple pulmonary diseases from the NIH Chest X-Ray dataset
-- Analyses performance disparities across demographic subgroups (age, sex, race)
-- Applies bias mitigation strategies using **AIF360** and **Fairlearn** to improve equitable performance across groups
-- Evaluates the fairness-accuracy tradeoff under different mitigation methods
+- Analyses the metadata of the NIH chest X-ray images: the target is the presence of a disease (any finding versus "No Finding"), and the sensitive attributes are patient age and gender
+- Computes reweighing weights with **AIF360** from the tabular metadata, by gender, by age quartile, and by both
+- Fine-tunes a pretrained **ResNet18** with a weighted sampler that uses these weights
+- Builds a second version of the dataset with image transformations (rotation, brightness, noise) as pre-processing
+- Compares six models (no reweighing, and the three reweighing schemes, with and without the transformed images) and looks at performance across age and gender groups
 
-**Why it matters**
-Deploying biased diagnostic tools in clinical settings can reinforce existing health disparities. This work explores how to build models that are both accurate and fair.
-
-**Stack:** Python · PyTorch · AIF360 · Fairlearn · Scikit-learn
+**Stack:** Python · PyTorch · PyTorch Lightning · AIF360 · scikit-learn

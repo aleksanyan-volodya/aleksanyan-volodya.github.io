@@ -13,7 +13,7 @@
       institution: Université Paris-Saclay, Orsay, France
       year: 2025 - Present
       description:
-        - Probability, optimization, advanced statistics, supervised and unsupervised learning, biostatistics (MVA), deep learning, foundations of ML, time series prediction.
+        - Probability, optimization, advanced statistics, supervised and unsupervised learning, NLP, time series, signal processing, reinforcement learning, optimization for computer vision, deep learning, biostatistics, geometric data analysis, deep learning for medical imaging, scientific ML.
         - "<b>MixtAI Scholarship (SaclAI-School)</b>: fellowship supporting diversity and academic excellence in AI."
     - title: Dual Bachelor's Degree in Computer Science and Mathematics
       institution: Université Paris-Saclay, Orsay, France
@@ -23,10 +23,34 @@
         - "Computer Science: fairness in AI, machine learning, distributed algorithms, theoretical CS, logic, databases, functional programming, numerical optimization."
     - title: Training on Gender-based and Sexual Violence
       year: 2023
+    - title: Merit and Civic Award
+      institution: City Hall of Reims, France
+      year: 2019
+      description:
+        - Awarded for a notable act of civic duty.
 
 - title: Research Projects & Internships
   type: time_table
   contents:
+    - title: Molecule Identification from Mass Spectra
+      institution: Enveda
+      year: Oct 2026 - Present
+      description:
+        - Development of models predicting the 2D chemical structure (SMILES string) of known and novel molecules from LC-MS/MS spectra.
+    - title: Cross-User Regression for EMG-to-Pose
+      year: Oct 2026 - Present
+      description:
+        - Prediction of the trajectories of 20 hand joint angles from wrist sEMG signals recorded during everyday movements.
+    - title: Recommender for Lesser-Known Films
+      year: Aug 2026 - Present
+      description:
+        - Personalized film recommender that combines well-loved films with little-known ones to broaden the user's horizon, evaluated per popularity decile.
+        - "Tools: Python, Streamlit."
+    - title: "Mini-LLaDA: Masked Diffusion Language Model"
+      year: Oct 2026
+      description:
+        - Re-implementation of LLaDA, a discrete diffusion model (33M parameters) trained from scratch to denoise masked text, with an interactive app showing the generation step by step.
+        - "Tools: Python, PyTorch."
     - title: CVNN for Direct and Inverse Problems of EM Wave Diffraction
       institution: "GeePS, CentraleSupélec (Supervisor: Marc Lambert)"
       year: Mar 2026 - Jul 2026
@@ -95,7 +119,7 @@
         - PyTorch, TensorFlow, Scikit-learn, AIF360, Fairlearn
     - title: Programming Languages
       items:
-        - Python, R, C, C++, OCaml, SQL
+        - Python, R, C, C++, OCaml, SQL, Matlab
 
 - title: Interests
   type: list

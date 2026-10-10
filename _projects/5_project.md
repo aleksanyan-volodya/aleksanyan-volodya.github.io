@@ -3,8 +3,7 @@ layout: page
 title: Complex-Valued Neural Networks for Electromagnetic Scattering
 description: Physics-informed complex-valued neural networks for the direct scattering problem, compared with real-valued networks. Internship project.
 img:
-importance: 5
-category: research
+importance: 3
 github: aleksanyan-volodya/scattering-problems
 tags: [Python, PyTorch, Complex-Valued Neural Networks, Physics-Informed ML]
 ---
@@ -18,6 +17,6 @@ Research internship at GeePS, CentraleSupélec, under the supervision of Marc La
 - Compares two versions: complex-valued blocks (complex-weight convolutions, ModReLU, phase-preserving normalization) and a real-valued CNN on stacked real and imaginary channels
 
 **Results**
-On 200 external test scenes with 8 stages, the complex version has a median relative L2 error of 3.5e-04 with 706k parameters. The real-valued version has 1.96e-04 with 1.4M parameters, so about twice as many.
+On 200 external test scenes with 8 stages, the complex version has a median relative L2 error of 3.5e-04 with 706k parameters. The real-valued version has 1.96e-04 with 1.4M parameters, so about twice as many. In a low-data setting with 200 training scenes, the complex version is better: median error 5.7e-03 against 8.0e-03 for the real-valued version.
 
 **Stack:** Python · PyTorch · NumPy · SciPy · MATLAB (data generation)
