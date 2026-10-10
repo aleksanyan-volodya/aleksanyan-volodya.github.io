@@ -66,7 +66,8 @@ layout: default
       height: auto;
     }
     @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-    #profile-photo-trigger { cursor: pointer; }
+    #profile-photo-trigger { pointer-events: none; }
+    #profile-photo-trigger img { pointer-events: auto; cursor: pointer; }
     #profile-photo-trigger img { box-shadow: 0 18px 40px -20px rgba(0,0,0,.45); }
 
     /* ---- recently watched (stylish tilted cards) ---- */
@@ -94,10 +95,21 @@ layout: default
     .film-name { margin-top: 10px; font-size: 0.95rem; font-weight: 600; line-height: 1.2; color: var(--global-text-color); }
     .film-sub { margin-top: 5px; font-size: 0.8rem; color: var(--global-theme-color); letter-spacing: 0.04em; }
 
+    /* ---- music visualizer (hidden until the photo is clicked) ---- */
+    .profile-viz {
+      position: absolute;
+      top: -52px; left: -52px;
+      width: calc(100% + 104px); height: calc(100% + 104px);
+      pointer-events: none; z-index: 1;
+      opacity: 0; transition: opacity 0.7s ease;
+    }
+    .profile-viz.is-on { opacity: 1; }
+
     @media (max-width: 768px) {
       .hero-grid { grid-template-columns: 1fr; gap: 24px; }
       .hero-photo { order: -1; }
       .hero-photo .photo-wrap { max-width: 220px; }
+      .post-header { overflow-x: clip; }
     }
     @media (prefers-reduced-motion: reduce) {
       .signature-name .sig-line, .sig-underline, .hero-photo .photo-wrap { animation: none; clip-path: none; transform: none; }
@@ -129,20 +141,109 @@ layout: default
               <div id="profile-photo-trigger">
                 {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image cache_bust=true %}
               </div>
+              <canvas id="profile-viz" class="profile-viz" aria-hidden="true"></canvas>
               <audio id="profile-audio" src="{{ '/assets/audio/claude_debussy.mp3' | relative_url }}" preload="none"></audio>
               <script>
                 (function () {
                   var trigger = document.getElementById("profile-photo-trigger");
                   var audio = document.getElementById("profile-audio");
-                  if (trigger && audio) {
-                    trigger.style.position = "relative";
-                    trigger.style.zIndex = "2";
-                    trigger.addEventListener("click", function (e) {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      if (audio.paused) { audio.play(); } else { audio.pause(); audio.currentTime = 0; }
-                    });
+                  var canvas = document.getElementById("profile-viz");
+                  if (!trigger || !audio) return;
+                  trigger.style.position = "relative";
+                  trigger.style.zIndex = "2";
+
+                  /* Spectrum ring around the photo, only visible while the music plays */
+                  var BARS = 64, BINS = 48, GAP = 18, MAX_LEN = 24;
+                  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                  var actx, analyser, data, geom, color, raf = null;
+
+                  function setupAudio() {
+                    var AC = window.AudioContext || window.webkitAudioContext;
+                    if (analyser || reduce || !canvas || !AC) return;
+                    try {
+                      actx = new AC();
+                      var src = actx.createMediaElementSource(audio);
+                      analyser = actx.createAnalyser();
+                      analyser.fftSize = 256;
+                      analyser.smoothingTimeConstant = 0.82;
+                      src.connect(analyser);
+                      analyser.connect(actx.destination);
+                      data = new Uint8Array(analyser.frequencyBinCount);
+                    } catch (err) {
+                      analyser = null;
+                    }
                   }
+
+                  function measure() {
+                    var img = trigger.querySelector("img");
+                    var dpr = window.devicePixelRatio || 1;
+                    canvas.width = canvas.offsetWidth * dpr;
+                    canvas.height = canvas.offsetHeight * dpr;
+                    var c = canvas.getBoundingClientRect(), r = img.getBoundingClientRect();
+                    geom = { dpr: dpr, cx: r.left - c.left + r.width / 2, cy: r.top - c.top + r.height / 2, r: r.width / 2 };
+                    color = getComputedStyle(document.documentElement).getPropertyValue("--global-theme-color").trim() || "#b509ac";
+                  }
+
+                  function draw() {
+                    var g = canvas.getContext("2d");
+                    analyser.getByteFrequencyData(data);
+                    g.setTransform(geom.dpr, 0, 0, geom.dpr, 0, 0);
+                    g.clearRect(0, 0, canvas.width, canvas.height);
+                    g.strokeStyle = color;
+                    g.lineCap = "round";
+                    g.lineWidth = 2.5;
+                    var half = BARS / 2, r0 = geom.r + GAP;
+                    for (var i = 0; i < BARS; i++) {
+                      /* mirrored left/right, low notes at the top */
+                      var k = i < half ? i : BARS - 1 - i;
+                      var v = data[Math.floor(Math.pow(k / half, 1.5) * BINS)] / 255;
+                      var len = 3 + v * v * MAX_LEN;
+                      var a = -Math.PI / 2 + (i + 0.5) / BARS * 2 * Math.PI;
+                      var cos = Math.cos(a), sin = Math.sin(a);
+                      g.globalAlpha = 0.3 + 0.7 * v;
+                      g.beginPath();
+                      g.moveTo(geom.cx + cos * r0, geom.cy + sin * r0);
+                      g.lineTo(geom.cx + cos * (r0 + len), geom.cy + sin * (r0 + len));
+                      g.stroke();
+                    }
+                    raf = requestAnimationFrame(draw);
+                  }
+
+                  function start() {
+                    if (!analyser) return;
+                    measure();
+                    canvas.classList.add("is-on");
+                    if (!raf) draw();
+                  }
+
+                  function stop() {
+                    if (!canvas) return;
+                    canvas.classList.remove("is-on");
+                    setTimeout(function () {
+                      if (audio.paused && raf) { cancelAnimationFrame(raf); raf = null; }
+                    }, 800);
+                  }
+
+                  trigger.addEventListener("click", function (e) {
+                    /* only the round photo counts, not the square box around it */
+                    var r = trigger.querySelector("img").getBoundingClientRect();
+                    var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+                    if (dx * dx + dy * dy > (r.width / 2) * (r.width / 2)) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (audio.paused) {
+                      setupAudio();
+                      if (actx && actx.state === "suspended") actx.resume();
+                      audio.play();
+                    } else {
+                      audio.pause();
+                      audio.currentTime = 0;
+                    }
+                  });
+                  audio.addEventListener("play", start);
+                  audio.addEventListener("pause", stop);
+                  audio.addEventListener("ended", stop);
+                  window.addEventListener("resize", function () { if (raf) measure(); });
                 })();
               </script>
             {% endif %}
@@ -151,6 +252,7 @@ layout: default
       {% endif %}
     </div>
   </header>
+
 
   <article>
     <div class="clearfix">{{ content }}</div>
