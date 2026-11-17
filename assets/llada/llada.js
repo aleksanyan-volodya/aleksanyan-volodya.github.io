@@ -1,7 +1,8 @@
 // Mini-LLaDA in the browser: byte-level BPE tokenizer + LLaDA sampler on top of onnxruntime-web.
-// The model (33M parameters, int8) and the tokenizer are loaded once, then everything runs locally.
+// The model (33M parameters) and the tokenizer are downloaded once from the Hugging Face Hub, then everything runs locally.
 (function () {
-  const BASE = document.currentScript.src.replace(/[^/]*$/, "");
+  const HUB = "https://huggingface.co/volodyaDuckDuck/mini-llada/resolve/main/";
+  const MODELS = { full: ["model.onnx", 132.6e6], light: ["model_int8.onnx", 33.4e6] };
   const $ = (id) => document.getElementById(id);
 
   // ---------- tokenizer (same as Hugging Face ByteLevel BPE) ----------
@@ -48,12 +49,13 @@
   }
 
   // ---------- model ----------
+  const sessions = {}; // "full" / "light" -> onnxruntime session, created on first use
   let session = null;
 
-  async function fetchWithProgress(url, label) {
+  async function fetchWithProgress(url, label, size) {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
-    const total = +res.headers.get("Content-Length") || 33.4e6;
+    const total = +res.headers.get("Content-Length") || size;
     const reader = res.body.getReader();
     const chunks = [];
     let got = 0;
@@ -71,16 +73,22 @@
   }
 
   async function load() {
-    if (session) return;
-    status("Loading tokenizer…");
-    const t = await (await fetch(BASE + "tokenizer.json")).json();
-    TOK = { vocab: t.vocab, inv: [], ranks: new Map(), mask: t.mask_id, eos: t.eos_id, seqLen: t.seq_len };
-    for (const [k, v] of Object.entries(t.vocab)) TOK.inv[v] = k;
-    t.merges.forEach((m, i) => TOK.ranks.set(m, i));
-    const bytes = await fetchWithProgress(BASE + "model_int8.onnx", "Downloading the model (once)");
-    status("Starting the model…");
-    ort.env.wasm.wasmPaths = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/";
-    session = await ort.InferenceSession.create(bytes, { executionProviders: ["wasm"] });
+    if (!TOK) {
+      status("Loading tokenizer…");
+      const t = await (await fetch(HUB + "tokenizer.json")).json();
+      TOK = { vocab: t.vocab, inv: [], ranks: new Map(), mask: t.mask_id, eos: t.eos_id, seqLen: t.seq_len };
+      for (const [k, v] of Object.entries(t.vocab)) TOK.inv[v] = k;
+      t.merges.forEach((m, i) => TOK.ranks.set(m, i));
+    }
+    const which = $("model").value;
+    if (!sessions[which]) {
+      const [file, size] = MODELS[which];
+      const bytes = await fetchWithProgress(HUB + file, "Downloading the model (only the first time)", size);
+      status("Starting the model…");
+      ort.env.wasm.wasmPaths = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/";
+      sessions[which] = await ort.InferenceSession.create(bytes, { executionProviders: ["wasm"] });
+    }
+    session = sessions[which];
   }
 
   async function logitsOf(x) {
@@ -103,7 +111,9 @@
 
   async function generate() {
     const my = ++runId;
-    $("go").disabled = true;
+    const buttons = document.querySelectorAll(".llada button");
+    buttons.forEach((b) => (b.disabled = true));
+    status("Starting…");
     try {
       await load();
       const prompt = $("prompt").value, suffix = $("suffix").value.trim();
@@ -153,10 +163,10 @@
       }
       status(`Done: ${steps} steps in ${((performance.now() - t0) / 1000).toFixed(1)} s. Change the text and press Generate again!`);
     } catch (e) {
-      status("Error: " + e.message);
+      status("Error: " + e.message + ($("model").value === "full" ? " (on a phone, try the Light model)" : ""));
       console.error(e);
     } finally {
-      if (my === runId) $("go").disabled = false;
+      if (my === runId) buttons.forEach((b) => (b.disabled = false));
     }
   }
 
@@ -183,4 +193,22 @@
     show();
   }
   $("go").addEventListener("click", generate);
+
+  // Presets: one click fills every setting and starts the generation.
+  const STORY = "Once upon a time";
+  const PRESETS = {
+    story: { prompt: STORY, suffix: "", length: 64, steps: 32, temp: 0.8, strategy: "confidence" },
+    gap: { prompt: "Once upon a time, there was a little dog named Max. Max was very sad because he had no friends.",
+           suffix: "From that day on, Max and the cat were best friends.", length: 40, steps: 40, temp: 0.8, strategy: "confidence" },
+    fast: { prompt: STORY, suffix: "", length: 64, steps: 8, temp: 0.8, strategy: "confidence" },
+    random: { prompt: STORY, suffix: "", length: 64, steps: 32, temp: 0.8, strategy: "random" },
+    greedy: { prompt: STORY, suffix: "", length: 64, steps: 32, temp: 0, strategy: "confidence" },
+  };
+  document.querySelectorAll("[data-preset]").forEach((btn) => btn.addEventListener("click", () => {
+    const p = PRESETS[btn.dataset.preset];
+    for (const k of ["prompt", "suffix", "strategy"]) $(k).value = p[k];
+    for (const k of ["length", "steps", "temp"]) { $(k).value = p[k]; $(k).dispatchEvent(new Event("input")); }
+    $("note").textContent = btn.title;
+    generate();
+  }));
 })();
