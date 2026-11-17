@@ -8,6 +8,8 @@ github: aleksanyan-volodya/LLaDA_interactive
 tags: [Python, PyTorch, Diffusion Language Models, Streamlit]
 ---
 
+**[▶ Try it live in your browser](/llada/)** (the model runs on your device, no server).
+
 LLaDA generates text without the usual left-to-right autoregressive scheme. A masked diffusion model is trained to predict masked tokens, then generates by starting from a fully masked sequence and revealing tokens progressively. This project re-implements the idea at a small scale and makes the process visible.
 
 **What it does**
