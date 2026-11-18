@@ -27,6 +27,6 @@ latest_posts:
 
 Hi, I'm Volodya, a student in Master 2 in **Mathematics and Artificial Intelligence** at [Université Paris-Saclay](https://www.universite-paris-saclay.fr).
 
-Before the Master's, I completed a **Dual Bachelor's Degree in Computer Science and Mathematics** at Université Paris-Saclay. My research interests gravitate around **fairness in AI**, studying how machine learning models encode and amplify social biases and developing techniques to mitigate them. I've applied this to medical imaging, vision-language models and tabular data. More broadly, I enjoy problems at the intersection of mathematics and real life impact.
+Before the Master's, I completed a **Dual Bachelor's Degree in Computer Science and Mathematics** at Université Paris-Saclay. I am curious about how AI can help understand **DNA and RNA interactions, proteins and molecules**. I care about models that are **explainable, interpretable and fair** rather than only accurate. Fairness in AI is still close to my heart: I have studied how machine learning models encode and amplify social biases and how to mitigate them, applying this to medical imaging, vision-language models and tabular data. More broadly, I enjoy problems at the intersection of mathematics and real life impact.
 
 Outside research, I am a film enthusiast (see below), a long-distance runner and I care a lot about student life and community, having been president of a student association and co-founder of a competitive programming club.
